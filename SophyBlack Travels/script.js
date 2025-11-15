@@ -2,6 +2,19 @@
 // SOPHYBLACK TRAVEL & TOURS - JAVASCRIPT
 // ========================================
 
+// EmailJS Configuration
+// IMPORTANT: Replace these with your actual EmailJS credentials
+const EMAILJS_CONFIG = {
+    serviceID: 'SophyBlack',
+    templateID: 'template_xar4hpv', 
+    publicKey: 'doqW8yunldRmchS4x'
+};
+
+// Initialize EmailJS
+(function() {
+    emailjs.init(EMAILJS_CONFIG.publicKey);
+})();
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
@@ -291,4 +304,5 @@ function isInViewport(element) {
 // CONSOLE MESSAGE
 // ========================================
 console.log('%cSophyblack Travel & Tours Voyages', 'color: #D4AF37; font-size: 24px; font-weight: bold;');
+
 console.log('%cWebsite loaded successfully! Ready to explore the world! 🌍✈️', 'color: #0C1A4B; font-size: 14px;');
