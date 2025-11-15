@@ -1,14 +1,14 @@
 // ========================================
 // SOPHYBLACK TRAVEL & TOURS - JAVASCRIPT
-// ========================================
+// ======================================== 
 
 // EmailJS Configuration
-// IMPORTANT: Replace these with your actual EmailJS credentials
 const EMAILJS_CONFIG = {
     serviceID: 'SophyBlack',
     templateID: 'template_xar4hpv', 
     publicKey: 'doqW8yunldRmchS4x'
 };
+
 
 // Initialize EmailJS
 (function() {
@@ -152,12 +152,36 @@ function handleContactFormSubmit(e) {
         return;
     }
 
-    // Here you would typically send the data to your server
-    // For now, we'll just show a success message
-    showNotification('Thank you for your inquiry! We will contact you shortly to plan your perfect adventure.', 'success');
-    
-    // Reset form
-    e.target.reset();
+    // Show loading state
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    // Prepare email parameters
+    const templateParams = {
+        from_name: name,
+        from_email: email,
+        service: service,
+        message: message,
+        to_name: 'Sophyblack Travel Team'
+    };
+
+    // Send email using EmailJS
+    emailjs.send(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.templateID, templateParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            showNotification('Thank you for your inquiry! We will contact you shortly to plan your perfect adventure.', 'success');
+            e.target.reset();
+        }, function(error) {
+            console.log('FAILED...', error);
+            showNotification('Sorry, there was an error sending your message. Please try again or contact us directly via WhatsApp.', 'error');
+        })
+        .finally(function() {
+            // Restore button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        });
 }
 
 function handleNewsletterSubscription(email) {
@@ -304,5 +328,4 @@ function isInViewport(element) {
 // CONSOLE MESSAGE
 // ========================================
 console.log('%cSophyblack Travel & Tours Voyages', 'color: #D4AF37; font-size: 24px; font-weight: bold;');
-
 console.log('%cWebsite loaded successfully! Ready to explore the world! 🌍✈️', 'color: #0C1A4B; font-size: 14px;');
