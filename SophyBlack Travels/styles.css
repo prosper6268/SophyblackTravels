@@ -340,6 +340,16 @@ section {
     background: white;
 }
 
+/* Expedia Banner Styling */
+.expedia-banner-container {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+    background: var(--accent);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
 .destinations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -685,4 +695,5 @@ footer {
     .services-grid {
         grid-template-columns: 1fr;
     }
+
 }
