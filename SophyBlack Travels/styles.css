@@ -333,6 +333,39 @@ section {
     margin-bottom: 1.5rem;
 }
 
+/* Partner Banner Styling */
+.service-card.partner-banner {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 2px solid var(--secondary);
+}
+
+.service-card.partner-banner h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.service-card.partner-banner p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.service-card.partner-banner a {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.service-card.partner-banner a:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.service-card.partner-banner img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 /* ========================================
    DESTINATIONS SECTION
    ======================================== */
@@ -695,5 +728,4 @@ footer {
     .services-grid {
         grid-template-columns: 1fr;
     }
-
 }
